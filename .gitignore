@@ -40,3 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 netlify.toml
+
+
+bun.lock
+components.json
+next-env.d.ts
