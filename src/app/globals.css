@@ -1,0 +1,282 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 345 82% 64%;
+    --primary-foreground: 355 100% 97%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+
+    --fab-pink: 345 82% 64%;
+    --fab-yellow: 45 100% 50%;
+    --fab-blue: 183 100% 80%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-white text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  .rainbow-border {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rainbow-border::before {
+    content: '';
+    position: absolute;
+    background: linear-gradient(to right,
+      hsl(0, 100%, 50%),
+      hsl(30, 100%, 50%),
+      hsl(60, 100%, 50%),
+      hsl(120, 100%, 50%),
+      hsl(240, 100%, 50%),
+      hsl(300, 100%, 50%)
+    );
+    width: 200%;
+    height: 200%;
+    border-radius: 50%;
+  }
+
+  .countdown-box {
+    @apply bg-black text-white font-bold text-3xl md:text-4xl lg:text-5xl flex items-center justify-center w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20;
+    border-radius: 6px;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .countdown-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .yellow-button {
+    @apply bg-[#FFDF00] text-black font-bold py-2 px-4 inline-block;
+    border: 2px solid black;
+    border-radius: 4px;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+    transition: all 0.2s ease;
+  }
+
+  .yellow-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8);
+  }
+
+  .cloud-background {
+    @apply bg-[#f74671] relative;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 50px; /* Ensure space for the wave */
+    min-height: 1000px; /* Ensure enough height for the image */
+  }
+  
+  .cloud-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/pattern-1.png'), url('/pattern-2.png'), url('/pattern-3.png');
+    background-repeat: repeat-y, repeat-y, repeat-y;
+    background-position: top left, top right, center;
+    background-size: 100% auto, 100% auto, 100% auto;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatPatterns 50s linear infinite;
+  }
+  
+  .cloud-background::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-image: url('/cloud-bg.svg');
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-size: auto 100%;
+    z-index: 1;
+  }
+  
+  .cloud-background > * {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .stats-box {
+    background-color: white;
+    border: 2px solid #f74671;
+    border-radius: 30px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .stats-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/pattern-1.png');
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 50%;
+    opacity: 0.03;
+    z-index: 0;
+  }
+  
+  .stats-box > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .white-rounded-box {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  /* Pattern Animation */
+  @keyframes floatPatterns {
+    0% {
+      background-position: 0% 0%, 100% 0%, 50% 0%;
+    }
+    100% {
+      background-position: 0% 100%, 100% 100%, 50% 100%;
+    }
+  }
+  
+  /* Additional background patterns */
+  .pattern-bg-1 {
+    position: relative;
+  }
+  
+  .pattern-bg-1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/pattern-1.png');
+    background-repeat: repeat;
+    opacity: 0.05;
+    z-index: 0;
+  }
+  
+  .pattern-bg-2 {
+    position: relative;
+  }
+  
+  .pattern-bg-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/pattern-2.png');
+    background-repeat: repeat;
+    opacity: 0.05;
+    z-index: 0;
+  }
+  
+  .pattern-bg-3 {
+    position: relative;
+  }
+  
+  .pattern-bg-3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/pattern-3.png');
+    background-repeat: repeat;
+    opacity: 0.05;
+    z-index: 0;
+  }
+}
